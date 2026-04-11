@@ -10,7 +10,6 @@ namespace FUSIIN_S2_Ejercicio1.controller
     {
         public AtencionController() { }
 
-
         private int x = 0;
 
         //arreglo
@@ -57,17 +56,49 @@ namespace FUSIIN_S2_Ejercicio1.controller
             switch (tipo)
             {
                 case 1:
-                    return sumaMontosDeLavado/contServicioLavado; break;
+                    return sumaMontosDeLavado / contServicioLavado; break;
                 case 2:
-                    return sumaMontosDeEncerado/contServicioEncerado; break;
+                    return sumaMontosDeEncerado / contServicioEncerado; break;
                 default:
-                    return sumaMontosDeEncerado/contServicioSilicona; break;
+                    return sumaMontosDeEncerado / contServicioSilicona; break;
             }
 
         }
 
+        public void RegistrarAtencion(AtencionEntity atencion)
+        {
+            if (atencionesRegistradas < arrAtencion.Length)
+            {
+                arrAtencion[atencionesRegistradas] = atencion;
+                atencionesRegistradas++;
+                //actualizar contadores y acumuladores
+                switch (atencion.TipoServicio)
+                {
+                    case 1:
+                        contServicioLavado++;
+                        atencion.MontoPagar = 10;
+                        break;
+                    case 2:
+                        contServicioEncerado++;
+                        atencion.MontoPagar = 15;
+                        break;
+                    default:
+                        contServicioSilicona++;
+                        atencion.MontoPagar = 10;
+                        break;
+                }
+            }
+            else
+            {
+                throw new Exception("No se pueden registrar más atenciones, capacidad máxima alcanzada.");
+            }
+
+            if (atencion.TipoServicio.Equals('C'))
+            {
+                atencion.MontoPagar = atencion.MontoPagar * 1.05f;
+            }
 
 
-        
+        }
     }
 }
