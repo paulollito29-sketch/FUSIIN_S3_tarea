@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controller\AtencionController.cs" />
-    <Compile Include="entity\AtencionEntity.cs" />
+    <Compile Include="controller\InventarioController.cs" />
+    <Compile Include="entity\Mueble.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

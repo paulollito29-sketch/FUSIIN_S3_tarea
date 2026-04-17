@@ -1,16 +1,9 @@
-﻿namespace FUSIIN_S2_Ejercicio1
+namespace FUSIIN_S2_Ejercicio1
 {
     partial class Form1
     {
-        /// <summary>
-        /// Variable del diseñador necesaria.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Limpiar los recursos que se estén usando.
-        /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,253 +15,298 @@
 
         #region Código generado por el Diseñador de Windows Forms
 
-        /// <summary>
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido de este método con el editor de código.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxRegistro = new System.Windows.Forms.GroupBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
-            this.cboTipoServicio = new System.Windows.Forms.ComboBox();
-            this.cboTipoVehiculo = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblPromedioLavado = new System.Windows.Forms.Label();
-            this.lblMenorDemanda = new System.Windows.Forms.Label();
-            this.lblSiliconas = new System.Windows.Forms.Label();
-            this.lblEncerados = new System.Windows.Forms.Label();
-            this.lblLavados = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dgwAtenciones = new System.Windows.Forms.DataGridView();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgwAtenciones)).BeginInit();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtStock = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.lblPrecio = new System.Windows.Forms.Label();
+            this.lblStock = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblCodigo = new System.Windows.Forms.Label();
+            this.groupBoxOperaciones = new System.Windows.Forms.GroupBox();
+            this.btnOrdenar = new System.Windows.Forms.Button();
+            this.btnEliminarTodos = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.lblBuscar = new System.Windows.Forms.Label();
+            this.dgvMuebles = new System.Windows.Forms.DataGridView();
+            this.lblTotalMueblesTitulo = new System.Windows.Forms.Label();
+            this.lblTotalStockTitulo = new System.Windows.Forms.Label();
+            this.lblTotalMuebles = new System.Windows.Forms.Label();
+            this.lblTotalStock = new System.Windows.Forms.Label();
+            this.groupBoxRegistro.SuspendLayout();
+            this.groupBoxOperaciones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMuebles)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBoxRegistro
             // 
-            this.groupBox1.Controls.Add(this.btnRegistrar);
-            this.groupBox1.Controls.Add(this.cboTipoServicio);
-            this.groupBox1.Controls.Add(this.cboTipoVehiculo);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(309, 134);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Registro";
+            this.groupBoxRegistro.Controls.Add(this.btnRegistrar);
+            this.groupBoxRegistro.Controls.Add(this.txtPrecio);
+            this.groupBoxRegistro.Controls.Add(this.txtStock);
+            this.groupBoxRegistro.Controls.Add(this.txtNombre);
+            this.groupBoxRegistro.Controls.Add(this.txtCodigo);
+            this.groupBoxRegistro.Controls.Add(this.lblPrecio);
+            this.groupBoxRegistro.Controls.Add(this.lblStock);
+            this.groupBoxRegistro.Controls.Add(this.lblNombre);
+            this.groupBoxRegistro.Controls.Add(this.lblCodigo);
+            this.groupBoxRegistro.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxRegistro.Name = "groupBoxRegistro";
+            this.groupBoxRegistro.Size = new System.Drawing.Size(370, 205);
+            this.groupBoxRegistro.TabIndex = 0;
+            this.groupBoxRegistro.TabStop = false;
+            this.groupBoxRegistro.Text = "Registro de muebles";
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(100, 87);
+            this.btnRegistrar.Location = new System.Drawing.Point(118, 160);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(193, 29);
-            this.btnRegistrar.TabIndex = 4;
-            this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.Size = new System.Drawing.Size(228, 30);
+            this.btnRegistrar.TabIndex = 8;
+            this.btnRegistrar.Text = "Registrar mueble";
             this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
-            // cboTipoServicio
+            // txtPrecio
             // 
-            this.cboTipoServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoServicio.FormattingEnabled = true;
-            this.cboTipoServicio.Location = new System.Drawing.Point(100, 57);
-            this.cboTipoServicio.Name = "cboTipoServicio";
-            this.cboTipoServicio.Size = new System.Drawing.Size(193, 24);
-            this.cboTipoServicio.TabIndex = 3;
+            this.txtPrecio.Location = new System.Drawing.Point(118, 124);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(228, 22);
+            this.txtPrecio.TabIndex = 7;
             // 
-            // cboTipoVehiculo
+            // txtStock
             // 
-            this.cboTipoVehiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoVehiculo.FormattingEnabled = true;
-            this.cboTipoVehiculo.Location = new System.Drawing.Point(100, 25);
-            this.cboTipoVehiculo.Name = "cboTipoVehiculo";
-            this.cboTipoVehiculo.Size = new System.Drawing.Size(193, 24);
-            this.cboTipoVehiculo.TabIndex = 2;
+            this.txtStock.Location = new System.Drawing.Point(118, 92);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(228, 22);
+            this.txtStock.TabIndex = 6;
             // 
-            // label2
+            // txtNombre
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Servicio";
+            this.txtNombre.Location = new System.Drawing.Point(118, 60);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(228, 22);
+            this.txtNombre.TabIndex = 5;
             // 
-            // label1
+            // txtCodigo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Vehículo";
+            this.txtCodigo.Location = new System.Drawing.Point(118, 28);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(228, 22);
+            this.txtCodigo.TabIndex = 4;
             // 
-            // groupBox2
+            // lblPrecio
             // 
-            this.groupBox2.Controls.Add(this.lblPromedioLavado);
-            this.groupBox2.Controls.Add(this.lblMenorDemanda);
-            this.groupBox2.Controls.Add(this.lblSiliconas);
-            this.groupBox2.Controls.Add(this.lblEncerados);
-            this.groupBox2.Controls.Add(this.lblLavados);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 152);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(309, 175);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Reporte";
+            this.lblPrecio.AutoSize = true;
+            this.lblPrecio.Location = new System.Drawing.Point(20, 127);
+            this.lblPrecio.Name = "lblPrecio";
+            this.lblPrecio.Size = new System.Drawing.Size(46, 16);
+            this.lblPrecio.TabIndex = 3;
+            this.lblPrecio.Text = "Precio";
             // 
-            // lblPromedioLavado
+            // lblStock
             // 
-            this.lblPromedioLavado.Location = new System.Drawing.Point(244, 136);
-            this.lblPromedioLavado.Name = "lblPromedioLavado";
-            this.lblPromedioLavado.Size = new System.Drawing.Size(43, 25);
-            this.lblPromedioLavado.TabIndex = 9;
-            this.lblPromedioLavado.Text = "0";
-            this.lblPromedioLavado.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblStock.AutoSize = true;
+            this.lblStock.Location = new System.Drawing.Point(20, 95);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(41, 16);
+            this.lblStock.TabIndex = 2;
+            this.lblStock.Text = "Stock";
             // 
-            // lblMenorDemanda
+            // lblNombre
             // 
-            this.lblMenorDemanda.Location = new System.Drawing.Point(223, 106);
-            this.lblMenorDemanda.Name = "lblMenorDemanda";
-            this.lblMenorDemanda.Size = new System.Drawing.Size(64, 25);
-            this.lblMenorDemanda.TabIndex = 8;
-            this.lblMenorDemanda.Text = "0";
-            this.lblMenorDemanda.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(20, 63);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(56, 16);
+            this.lblNombre.TabIndex = 1;
+            this.lblNombre.Text = "Nombre";
             // 
-            // lblSiliconas
+            // lblCodigo
             // 
-            this.lblSiliconas.Location = new System.Drawing.Point(244, 76);
-            this.lblSiliconas.Name = "lblSiliconas";
-            this.lblSiliconas.Size = new System.Drawing.Size(43, 25);
-            this.lblSiliconas.TabIndex = 7;
-            this.lblSiliconas.Text = "0";
-            this.lblSiliconas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.Location = new System.Drawing.Point(20, 31);
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(52, 16);
+            this.lblCodigo.TabIndex = 0;
+            this.lblCodigo.Text = "Código";
             // 
-            // lblEncerados
+            // groupBoxOperaciones
             // 
-            this.lblEncerados.Location = new System.Drawing.Point(244, 49);
-            this.lblEncerados.Name = "lblEncerados";
-            this.lblEncerados.Size = new System.Drawing.Size(43, 25);
-            this.lblEncerados.TabIndex = 6;
-            this.lblEncerados.Text = "0";
-            this.lblEncerados.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.groupBoxOperaciones.Controls.Add(this.btnOrdenar);
+            this.groupBoxOperaciones.Controls.Add(this.btnEliminarTodos);
+            this.groupBoxOperaciones.Controls.Add(this.btnEliminar);
+            this.groupBoxOperaciones.Controls.Add(this.btnBuscar);
+            this.groupBoxOperaciones.Controls.Add(this.txtBuscar);
+            this.groupBoxOperaciones.Controls.Add(this.lblBuscar);
+            this.groupBoxOperaciones.Location = new System.Drawing.Point(12, 223);
+            this.groupBoxOperaciones.Name = "groupBoxOperaciones";
+            this.groupBoxOperaciones.Size = new System.Drawing.Size(370, 172);
+            this.groupBoxOperaciones.TabIndex = 1;
+            this.groupBoxOperaciones.TabStop = false;
+            this.groupBoxOperaciones.Text = "Operaciones";
             // 
-            // lblLavados
+            // btnOrdenar
             // 
-            this.lblLavados.Location = new System.Drawing.Point(244, 24);
-            this.lblLavados.Name = "lblLavados";
-            this.lblLavados.Size = new System.Drawing.Size(43, 25);
-            this.lblLavados.TabIndex = 5;
-            this.lblLavados.Text = "0";
-            this.lblLavados.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOrdenar.Location = new System.Drawing.Point(23, 128);
+            this.btnOrdenar.Name = "btnOrdenar";
+            this.btnOrdenar.Size = new System.Drawing.Size(323, 30);
+            this.btnOrdenar.TabIndex = 5;
+            this.btnOrdenar.Text = "Ordenar por precio (descendente)";
+            this.btnOrdenar.UseVisualStyleBackColor = true;
+            this.btnOrdenar.Click += new System.EventHandler(this.btnOrdenar_Click);
             // 
-            // label7
+            // btnEliminarTodos
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 140);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(177, 16);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Monto promedio por Lavado";
+            this.btnEliminarTodos.Location = new System.Drawing.Point(187, 85);
+            this.btnEliminarTodos.Name = "btnEliminarTodos";
+            this.btnEliminarTodos.Size = new System.Drawing.Size(159, 30);
+            this.btnEliminarTodos.TabIndex = 4;
+            this.btnEliminarTodos.Text = "Eliminar todos";
+            this.btnEliminarTodos.UseVisualStyleBackColor = true;
+            this.btnEliminarTodos.Click += new System.EventHandler(this.btnEliminarTodos_Click);
             // 
-            // label6
+            // btnEliminar
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 110);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(197, 16);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Servicios menos demandados: ";
+            this.btnEliminar.Location = new System.Drawing.Point(23, 85);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(159, 30);
+            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.Text = "Eliminar seleccionado";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // label5
+            // btnBuscar
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 80);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(213, 16);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Cantidad de servicios de Silicona: ";
+            this.btnBuscar.Location = new System.Drawing.Point(266, 38);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(80, 30);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // label4
+            // txtBuscar
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 53);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(231, 16);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Cantidad de servicios de Encerados: ";
+            this.txtBuscar.Location = new System.Drawing.Point(88, 42);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(172, 22);
+            this.txtBuscar.TabIndex = 1;
             // 
-            // label3
+            // lblBuscar
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(218, 16);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Cantidad de servicios de Lavados: ";
+            this.lblBuscar.AutoSize = true;
+            this.lblBuscar.Location = new System.Drawing.Point(20, 45);
+            this.lblBuscar.Name = "lblBuscar";
+            this.lblBuscar.Size = new System.Drawing.Size(50, 16);
+            this.lblBuscar.TabIndex = 0;
+            this.lblBuscar.Text = "Buscar";
             // 
-            // dgwAtenciones
+            // dgvMuebles
             // 
-            this.dgwAtenciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwAtenciones.Location = new System.Drawing.Point(347, 21);
-            this.dgwAtenciones.Name = "dgwAtenciones";
-            this.dgwAtenciones.RowHeadersWidth = 51;
-            this.dgwAtenciones.RowTemplate.Height = 24;
-            this.dgwAtenciones.Size = new System.Drawing.Size(362, 306);
-            this.dgwAtenciones.TabIndex = 2;
+            this.dgvMuebles.AllowUserToAddRows = false;
+            this.dgvMuebles.AllowUserToDeleteRows = false;
+            this.dgvMuebles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMuebles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMuebles.Location = new System.Drawing.Point(401, 21);
+            this.dgvMuebles.MultiSelect = false;
+            this.dgvMuebles.Name = "dgvMuebles";
+            this.dgvMuebles.ReadOnly = true;
+            this.dgvMuebles.RowHeadersWidth = 51;
+            this.dgvMuebles.RowTemplate.Height = 24;
+            this.dgvMuebles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMuebles.Size = new System.Drawing.Size(545, 324);
+            this.dgvMuebles.TabIndex = 2;
+            // 
+            // lblTotalMueblesTitulo
+            // 
+            this.lblTotalMueblesTitulo.AutoSize = true;
+            this.lblTotalMueblesTitulo.Location = new System.Drawing.Point(398, 363);
+            this.lblTotalMueblesTitulo.Name = "lblTotalMueblesTitulo";
+            this.lblTotalMueblesTitulo.Size = new System.Drawing.Size(169, 16);
+            this.lblTotalMueblesTitulo.TabIndex = 3;
+            this.lblTotalMueblesTitulo.Text = "Total muebles registrados:";
+            // 
+            // lblTotalStockTitulo
+            // 
+            this.lblTotalStockTitulo.AutoSize = true;
+            this.lblTotalStockTitulo.Location = new System.Drawing.Point(398, 389);
+            this.lblTotalStockTitulo.Name = "lblTotalStockTitulo";
+            this.lblTotalStockTitulo.Size = new System.Drawing.Size(145, 16);
+            this.lblTotalStockTitulo.TabIndex = 4;
+            this.lblTotalStockTitulo.Text = "Total unidades en stock:";
+            // 
+            // lblTotalMuebles
+            // 
+            this.lblTotalMuebles.Location = new System.Drawing.Point(582, 359);
+            this.lblTotalMuebles.Name = "lblTotalMuebles";
+            this.lblTotalMuebles.Size = new System.Drawing.Size(95, 23);
+            this.lblTotalMuebles.TabIndex = 5;
+            this.lblTotalMuebles.Text = "0";
+            this.lblTotalMuebles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblTotalStock
+            // 
+            this.lblTotalStock.Location = new System.Drawing.Point(582, 385);
+            this.lblTotalStock.Name = "lblTotalStock";
+            this.lblTotalStock.Size = new System.Drawing.Size(95, 23);
+            this.lblTotalStock.TabIndex = 6;
+            this.lblTotalStock.Text = "0";
+            this.lblTotalStock.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 351);
-            this.Controls.Add(this.dgwAtenciones);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(968, 421);
+            this.Controls.Add(this.lblTotalStock);
+            this.Controls.Add(this.lblTotalMuebles);
+            this.Controls.Add(this.lblTotalStockTitulo);
+            this.Controls.Add(this.lblTotalMueblesTitulo);
+            this.Controls.Add(this.dgvMuebles);
+            this.Controls.Add(this.groupBoxOperaciones);
+            this.Controls.Add(this.groupBoxRegistro);
             this.Name = "Form1";
-            this.Text = "Registro de Atenciones";
+            this.Text = "Sistema de Inventario - Tienda de Muebles";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgwAtenciones)).EndInit();
+            this.groupBoxRegistro.ResumeLayout(false);
+            this.groupBoxRegistro.PerformLayout();
+            this.groupBoxOperaciones.ResumeLayout(false);
+            this.groupBoxOperaciones.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMuebles)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBoxRegistro;
         private System.Windows.Forms.Button btnRegistrar;
-        private System.Windows.Forms.ComboBox cboTipoServicio;
-        private System.Windows.Forms.ComboBox cboTipoVehiculo;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblPromedioLavado;
-        private System.Windows.Forms.Label lblMenorDemanda;
-        private System.Windows.Forms.Label lblSiliconas;
-        private System.Windows.Forms.Label lblEncerados;
-        private System.Windows.Forms.Label lblLavados;
-        private System.Windows.Forms.DataGridView dgwAtenciones;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.TextBox txtStock;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.Label lblPrecio;
+        private System.Windows.Forms.Label lblStock;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label lblCodigo;
+        private System.Windows.Forms.GroupBox groupBoxOperaciones;
+        private System.Windows.Forms.Button btnOrdenar;
+        private System.Windows.Forms.Button btnEliminarTodos;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Label lblBuscar;
+        private System.Windows.Forms.DataGridView dgvMuebles;
+        private System.Windows.Forms.Label lblTotalMueblesTitulo;
+        private System.Windows.Forms.Label lblTotalStockTitulo;
+        private System.Windows.Forms.Label lblTotalMuebles;
+        private System.Windows.Forms.Label lblTotalStock;
     }
 }
-
