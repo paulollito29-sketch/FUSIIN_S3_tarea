@@ -10,7 +10,7 @@ namespace FUSIIN_S2_Ejercicio1
 {
     public partial class Form1 : Form
     {
-        private readonly DisqueraController disqueraController = new DisqueraController();
+        private readonly CatalogoMusicalController catalogoMusicalController = new CatalogoMusicalController();
 
         public Form1()
         {
@@ -33,7 +33,7 @@ namespace FUSIIN_S2_Ejercicio1
                 return;
             }
 
-            bool ok = disqueraController.RegistrarAlbum(new Album(codigo, nombre));
+            bool ok = catalogoMusicalController.RegistrarAlbum(new Album { Codigo = codigo, Nombre = nombre });
             if (!ok)
             {
                 MessageBox.Show("No se pudo registrar. Ya existe un álbum con ese código.", "Código duplicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -49,7 +49,7 @@ namespace FUSIIN_S2_Ejercicio1
 
         private void btnRegistrarCancion_Click(object sender, EventArgs e)
         {
-            if (!(cboAlbumCancion.SelectedItem is ComboOption albumOption))
+            if (!(cboAlbumCancion.SelectedItem is ComboBoxOption albumOption))
             {
                 MessageBox.Show("Debe seleccionar un álbum.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -70,8 +70,8 @@ namespace FUSIIN_S2_Ejercicio1
                 return;
             }
 
-            var cancion = new Cancion(codigo, nombre, duracion);
-            bool ok = disqueraController.RegistrarCancionEnAlbum(albumOption.Value, cancion);
+            var cancion = new Cancion { Codigo = codigo, Nombre = nombre, Duracion = duracion };
+            bool ok = catalogoMusicalController.RegistrarCancionEnAlbum(albumOption.Value, cancion);
 
             if (!ok)
             {
@@ -89,7 +89,7 @@ namespace FUSIIN_S2_Ejercicio1
 
         private void btnMostrarAlbumes_Click(object sender, EventArgs e)
         {
-            var albumes = disqueraController.ObtenerAlbumes();
+            var albumes = catalogoMusicalController.ObtenerAlbumes();
             lstResultados.Items.Clear();
 
             foreach (Album album in albumes)
@@ -105,7 +105,7 @@ namespace FUSIIN_S2_Ejercicio1
 
         private void btnMostrarCanciones_Click(object sender, EventArgs e)
         {
-            List<string> canciones = disqueraController.ObtenerNombresCanciones();
+            List<string> canciones = catalogoMusicalController.ObtenerNombresCanciones();
             lstResultados.Items.Clear();
 
             foreach (string nombre in canciones)
@@ -121,13 +121,13 @@ namespace FUSIIN_S2_Ejercicio1
 
         private void btnVerCancionesAlbum_Click(object sender, EventArgs e)
         {
-            if (!(cboAlbumConsulta.SelectedItem is ComboOption albumOption))
+            if (!(cboAlbumConsulta.SelectedItem is ComboBoxOption albumOption))
             {
                 MessageBox.Show("Seleccione un álbum para listar sus canciones.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            List<string> canciones = disqueraController.ObtenerNombresCancionesPorAlbum(albumOption.Value);
+            List<string> canciones = catalogoMusicalController.ObtenerNombresCancionesPorAlbum(albumOption.Value);
             lstResultados.Items.Clear();
 
             foreach (string nombre in canciones)
@@ -143,7 +143,7 @@ namespace FUSIIN_S2_Ejercicio1
 
         private void btnAlbumConMasCanciones_Click(object sender, EventArgs e)
         {
-            Album album = disqueraController.ObtenerAlbumConMasCanciones();
+            Album album = catalogoMusicalController.ObtenerAlbumConMasCanciones();
             if (album == null)
             {
                 MessageBox.Show("No hay álbumes registrados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -159,13 +159,13 @@ namespace FUSIIN_S2_Ejercicio1
 
         private void btnAlbumesPorCancion_Click(object sender, EventArgs e)
         {
-            if (!(cboCancionConsulta.SelectedItem is ComboOption cancionOption))
+            if (!(cboCancionConsulta.SelectedItem is ComboBoxOption cancionOption))
             {
                 MessageBox.Show("Seleccione una canción para consultar sus álbumes.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            List<string> albumes = disqueraController.ObtenerAlbumesDondeEstaCancion(cancionOption.Value);
+            List<string> albumes = catalogoMusicalController.ObtenerAlbumesDondeEstaCancion(cancionOption.Value);
 
             if (!albumes.Any())
             {
@@ -179,7 +179,7 @@ namespace FUSIIN_S2_Ejercicio1
 
         private void btnDuraciones_Click(object sender, EventArgs e)
         {
-            var (mayor, menor) = disqueraController.ObtenerCancionMayorYMenorDuracion();
+            var (mayor, menor) = catalogoMusicalController.ObtenerCancionMayorYMenorDuracion();
             if (mayor == null || menor == null)
             {
                 MessageBox.Show("No hay canciones registradas.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -195,19 +195,19 @@ namespace FUSIIN_S2_Ejercicio1
 
         private void RefrescarCombos()
         {
-            List<Album> albumes = disqueraController.ObtenerAlbumes();
+            List<Album> albumes = catalogoMusicalController.ObtenerAlbumes();
 
             cboAlbumCancion.DataSource = albumes
-                .Select(a => new ComboOption(a.Codigo, $"{a.Codigo} - {a.Nombre}"))
+                .Select(a => new ComboBoxOption(a.Codigo, $"{a.Codigo} - {a.Nombre}"))
                 .ToList();
 
             cboAlbumConsulta.DataSource = albumes
-                .Select(a => new ComboOption(a.Codigo, $"{a.Codigo} - {a.Nombre}"))
+                .Select(a => new ComboBoxOption(a.Codigo, $"{a.Codigo} - {a.Nombre}"))
                 .ToList();
 
-            List<ComboOption> canciones = albumes
+            List<ComboBoxOption> canciones = albumes
                 .SelectMany(a => a.Canciones)
-                .Select(c => new ComboOption(c.Codigo, $"{c.Codigo} - {c.Nombre}"))
+                .Select(c => new ComboBoxOption(c.Codigo, $"{c.Codigo} - {c.Nombre}"))
                 .GroupBy(x => x.Value, StringComparer.OrdinalIgnoreCase)
                 .Select(g => g.First())
                 .OrderBy(x => x.Text)
@@ -216,9 +216,9 @@ namespace FUSIIN_S2_Ejercicio1
             cboCancionConsulta.DataSource = canciones;
         }
 
-        private class ComboOption
+        private class ComboBoxOption
         {
-            public ComboOption(string value, string text)
+            public ComboBoxOption(string value, string text)
             {
                 Value = value;
                 Text = text;

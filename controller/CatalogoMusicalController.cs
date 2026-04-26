@@ -5,7 +5,7 @@ using FUSIIN_S2_Ejercicio1.entity;
 
 namespace FUSIIN_S2_Ejercicio1.controller
 {
-    internal class DisqueraController
+    internal class CatalogoMusicalController
     {
         private readonly List<Album> albumes = new List<Album>();
 
@@ -22,6 +22,7 @@ namespace FUSIIN_S2_Ejercicio1.controller
                 return false;
             }
 
+            album.Canciones = album.Canciones ?? new List<Cancion>();
             albumes.Add(album);
             return true;
         }
@@ -41,12 +42,20 @@ namespace FUSIIN_S2_Ejercicio1.controller
         public bool RegistrarCancionEnAlbum(string codigoAlbum, Cancion cancion)
         {
             Album album = BuscarAlbumPorCodigo(codigoAlbum);
-            if (album == null)
+            if (album == null || cancion == null)
             {
                 return false;
             }
 
-            return album.AgregarCancion(cancion);
+            album.Canciones = album.Canciones ?? new List<Cancion>();
+            bool existe = album.Canciones.Any(c => c.Codigo.Equals(cancion.Codigo, StringComparison.OrdinalIgnoreCase));
+            if (existe)
+            {
+                return false;
+            }
+
+            album.Canciones.Add(cancion);
+            return true;
         }
 
         public List<string> ObtenerNombresCanciones()
