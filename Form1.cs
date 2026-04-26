@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 using FUSIIN_S2_Ejercicio1.controller;
 using FUSIIN_S2_Ejercicio1.entity;
@@ -9,7 +10,7 @@ namespace FUSIIN_S2_Ejercicio1
 {
     public partial class Form1 : Form
     {
-        private readonly InventarioController inventarioController = new InventarioController();
+        private readonly DisqueraController disqueraController = new DisqueraController();
 
         public Form1()
         {
@@ -18,143 +19,218 @@ namespace FUSIIN_S2_Ejercicio1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ConfigurarGrilla();
-            RefrescarVista(inventarioController.ObtenerTodos());
+            RefrescarCombos();
         }
 
-        private void ConfigurarGrilla()
+        private void btnRegistrarAlbum_Click(object sender, EventArgs e)
         {
-            dgvMuebles.AutoGenerateColumns = false;
-            dgvMuebles.Columns.Clear();
-
-            dgvMuebles.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Código",
-                DataPropertyName = "Codigo",
-                Name = "Codigo"
-            });
-
-            dgvMuebles.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Nombre",
-                DataPropertyName = "Nombre",
-                Name = "Nombre"
-            });
-
-            dgvMuebles.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Stock",
-                DataPropertyName = "Stock",
-                Name = "Stock"
-            });
-
-            dgvMuebles.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Precio",
-                DataPropertyName = "Precio",
-                Name = "Precio",
-                DefaultCellStyle = { Format = "C2" }
-            });
-        }
-
-        private void btnRegistrar_Click(object sender, EventArgs e)
-        {
-            string codigo = txtCodigo.Text.Trim();
-            string nombre = txtNombre.Text.Trim();
+            string codigo = txtCodigoAlbum.Text.Trim();
+            string nombre = txtNombreAlbum.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(codigo) || string.IsNullOrWhiteSpace(nombre))
             {
-                MessageBox.Show("Debe ingresar código y nombre.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ingrese código y nombre para el álbum.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!int.TryParse(txtStock.Text.Trim(), out int stock) || stock < 0)
+            bool ok = disqueraController.RegistrarAlbum(new Album(codigo, nombre));
+            if (!ok)
             {
-                MessageBox.Show("El stock debe ser un número entero mayor o igual a 0.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No se pudo registrar. Ya existe un álbum con ese código.", "Código duplicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            if (!decimal.TryParse(txtPrecio.Text.Trim(), NumberStyles.Number, CultureInfo.CurrentCulture, out decimal precio) || precio < 0)
-            {
-                MessageBox.Show("El precio debe ser un número mayor o igual a 0.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            var mueble = new Mueble(codigo, nombre, stock, precio);
-            bool registrado = inventarioController.Registrar(mueble);
-
-            if (!registrado)
-            {
-                MessageBox.Show("Ya existe un mueble con ese código.", "Código duplicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            LimpiarCamposRegistro();
-            RefrescarVista(inventarioController.ObtenerTodos());
+            MessageBox.Show("Álbum registrado correctamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtCodigoAlbum.Clear();
+            txtNombreAlbum.Clear();
+            txtCodigoAlbum.Focus();
+            RefrescarCombos();
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void btnRegistrarCancion_Click(object sender, EventArgs e)
         {
-            RefrescarVista(inventarioController.BuscarPorNombre(txtBuscar.Text.Trim()));
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (dgvMuebles.SelectedRows.Count == 0)
+            if (!(cboAlbumCancion.SelectedItem is ComboOption albumOption))
             {
-                MessageBox.Show("Seleccione un mueble para eliminar.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar un álbum.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string codigo = Convert.ToString(dgvMuebles.SelectedRows[0].Cells["Codigo"].Value);
+            string codigo = txtCodigoCancion.Text.Trim();
+            string nombre = txtNombreCancion.Text.Trim();
 
-            if (!inventarioController.EliminarPorCodigo(codigo))
+            if (string.IsNullOrWhiteSpace(codigo) || string.IsNullOrWhiteSpace(nombre))
             {
-                MessageBox.Show("No se pudo eliminar el mueble seleccionado.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ingrese código y nombre para la canción.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            RefrescarVista(inventarioController.BuscarPorNombre(txtBuscar.Text.Trim()));
-        }
-
-        private void btnEliminarTodos_Click(object sender, EventArgs e)
-        {
-            var confirmacion = MessageBox.Show(
-                "¿Seguro que desea eliminar todos los muebles registrados?",
-                "Confirmación",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirmacion == DialogResult.No)
+            if (!double.TryParse(txtDuracionCancion.Text.Trim(), NumberStyles.Number, CultureInfo.CurrentCulture, out double duracion) || duracion <= 0)
             {
+                MessageBox.Show("La duración debe ser un número mayor a 0.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            inventarioController.EliminarTodos();
-            RefrescarVista(inventarioController.ObtenerTodos());
+            var cancion = new Cancion(codigo, nombre, duracion);
+            bool ok = disqueraController.RegistrarCancionEnAlbum(albumOption.Value, cancion);
+
+            if (!ok)
+            {
+                MessageBox.Show("No se pudo registrar la canción. Verifique si el código ya existe dentro del álbum.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            MessageBox.Show("Canción registrada correctamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtCodigoCancion.Clear();
+            txtNombreCancion.Clear();
+            txtDuracionCancion.Clear();
+            txtCodigoCancion.Focus();
+            RefrescarCombos();
         }
 
-        private void btnOrdenar_Click(object sender, EventArgs e)
+        private void btnMostrarAlbumes_Click(object sender, EventArgs e)
         {
-            RefrescarVista(inventarioController.ObtenerTodos());
+            var albumes = disqueraController.ObtenerAlbumes();
+            lstResultados.Items.Clear();
+
+            foreach (Album album in albumes)
+            {
+                lstResultados.Items.Add($"{album.Codigo} - {album.Nombre}");
+            }
+
+            if (!albumes.Any())
+            {
+                MessageBox.Show("No hay álbumes registrados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        private void RefrescarVista(List<Mueble> muebles)
+        private void btnMostrarCanciones_Click(object sender, EventArgs e)
         {
-            dgvMuebles.DataSource = null;
-            dgvMuebles.DataSource = muebles;
+            List<string> canciones = disqueraController.ObtenerNombresCanciones();
+            lstResultados.Items.Clear();
 
-            lblTotalMuebles.Text = inventarioController.TotalMueblesRegistrados().ToString();
-            lblTotalStock.Text = inventarioController.TotalStock().ToString();
+            foreach (string nombre in canciones)
+            {
+                lstResultados.Items.Add(nombre);
+            }
+
+            if (!canciones.Any())
+            {
+                MessageBox.Show("No hay canciones registradas.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        private void LimpiarCamposRegistro()
+        private void btnVerCancionesAlbum_Click(object sender, EventArgs e)
         {
-            txtCodigo.Clear();
-            txtNombre.Clear();
-            txtStock.Clear();
-            txtPrecio.Clear();
-            txtCodigo.Focus();
+            if (!(cboAlbumConsulta.SelectedItem is ComboOption albumOption))
+            {
+                MessageBox.Show("Seleccione un álbum para listar sus canciones.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            List<string> canciones = disqueraController.ObtenerNombresCancionesPorAlbum(albumOption.Value);
+            lstResultados.Items.Clear();
+
+            foreach (string nombre in canciones)
+            {
+                lstResultados.Items.Add(nombre);
+            }
+
+            if (!canciones.Any())
+            {
+                MessageBox.Show("El álbum seleccionado no tiene canciones registradas.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnAlbumConMasCanciones_Click(object sender, EventArgs e)
+        {
+            Album album = disqueraController.ObtenerAlbumConMasCanciones();
+            if (album == null)
+            {
+                MessageBox.Show("No hay álbumes registrados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            MessageBox.Show(
+                $"Álbum con más canciones: {album.Nombre} ({album.Canciones.Count} canciones)",
+                "Resultado",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+
+        private void btnAlbumesPorCancion_Click(object sender, EventArgs e)
+        {
+            if (!(cboCancionConsulta.SelectedItem is ComboOption cancionOption))
+            {
+                MessageBox.Show("Seleccione una canción para consultar sus álbumes.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            List<string> albumes = disqueraController.ObtenerAlbumesDondeEstaCancion(cancionOption.Value);
+
+            if (!albumes.Any())
+            {
+                MessageBox.Show("La canción seleccionada no está registrada en álbumes.", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string mensaje = "La canción aparece en:\n- " + string.Join("\n- ", albumes);
+            MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnDuraciones_Click(object sender, EventArgs e)
+        {
+            var (mayor, menor) = disqueraController.ObtenerCancionMayorYMenorDuracion();
+            if (mayor == null || menor == null)
+            {
+                MessageBox.Show("No hay canciones registradas.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string mensaje =
+                $"Mayor duración: {mayor.Nombre} ({mayor.Duracion:F2})\n" +
+                $"Menor duración: {menor.Nombre} ({menor.Duracion:F2})";
+
+            MessageBox.Show(mensaje, "Duraciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void RefrescarCombos()
+        {
+            List<Album> albumes = disqueraController.ObtenerAlbumes();
+
+            cboAlbumCancion.DataSource = albumes
+                .Select(a => new ComboOption(a.Codigo, $"{a.Codigo} - {a.Nombre}"))
+                .ToList();
+
+            cboAlbumConsulta.DataSource = albumes
+                .Select(a => new ComboOption(a.Codigo, $"{a.Codigo} - {a.Nombre}"))
+                .ToList();
+
+            List<ComboOption> canciones = albumes
+                .SelectMany(a => a.Canciones)
+                .Select(c => new ComboOption(c.Codigo, $"{c.Codigo} - {c.Nombre}"))
+                .GroupBy(x => x.Value, StringComparer.OrdinalIgnoreCase)
+                .Select(g => g.First())
+                .OrderBy(x => x.Text)
+                .ToList();
+
+            cboCancionConsulta.DataSource = canciones;
+        }
+
+        private class ComboOption
+        {
+            public ComboOption(string value, string text)
+            {
+                Value = value;
+                Text = text;
+            }
+
+            public string Value { get; }
+            public string Text { get; }
+
+            public override string ToString()
+            {
+                return Text;
+            }
         }
     }
 }

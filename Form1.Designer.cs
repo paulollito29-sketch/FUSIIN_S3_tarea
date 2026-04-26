@@ -17,296 +17,379 @@ namespace FUSIIN_S2_Ejercicio1
 
         private void InitializeComponent()
         {
-            this.groupBoxRegistro = new System.Windows.Forms.GroupBox();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.txtStock = new System.Windows.Forms.TextBox();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.lblPrecio = new System.Windows.Forms.Label();
-            this.lblStock = new System.Windows.Forms.Label();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.lblCodigo = new System.Windows.Forms.Label();
-            this.groupBoxOperaciones = new System.Windows.Forms.GroupBox();
-            this.btnOrdenar = new System.Windows.Forms.Button();
-            this.btnEliminarTodos = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.lblBuscar = new System.Windows.Forms.Label();
-            this.dgvMuebles = new System.Windows.Forms.DataGridView();
-            this.lblTotalMueblesTitulo = new System.Windows.Forms.Label();
-            this.lblTotalStockTitulo = new System.Windows.Forms.Label();
-            this.lblTotalMuebles = new System.Windows.Forms.Label();
-            this.lblTotalStock = new System.Windows.Forms.Label();
-            this.groupBoxRegistro.SuspendLayout();
-            this.groupBoxOperaciones.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMuebles)).BeginInit();
+            this.groupBoxAlbum = new System.Windows.Forms.GroupBox();
+            this.btnRegistrarAlbum = new System.Windows.Forms.Button();
+            this.txtNombreAlbum = new System.Windows.Forms.TextBox();
+            this.txtCodigoAlbum = new System.Windows.Forms.TextBox();
+            this.lblNombreAlbum = new System.Windows.Forms.Label();
+            this.lblCodigoAlbum = new System.Windows.Forms.Label();
+            this.groupBoxCancion = new System.Windows.Forms.GroupBox();
+            this.cboAlbumCancion = new System.Windows.Forms.ComboBox();
+            this.lblAlbumCancion = new System.Windows.Forms.Label();
+            this.btnRegistrarCancion = new System.Windows.Forms.Button();
+            this.txtDuracionCancion = new System.Windows.Forms.TextBox();
+            this.txtNombreCancion = new System.Windows.Forms.TextBox();
+            this.txtCodigoCancion = new System.Windows.Forms.TextBox();
+            this.lblDuracionCancion = new System.Windows.Forms.Label();
+            this.lblNombreCancion = new System.Windows.Forms.Label();
+            this.lblCodigoCancion = new System.Windows.Forms.Label();
+            this.groupBoxListas = new System.Windows.Forms.GroupBox();
+            this.btnVerCancionesAlbum = new System.Windows.Forms.Button();
+            this.cboAlbumConsulta = new System.Windows.Forms.ComboBox();
+            this.lblAlbumConsulta = new System.Windows.Forms.Label();
+            this.btnMostrarCanciones = new System.Windows.Forms.Button();
+            this.btnMostrarAlbumes = new System.Windows.Forms.Button();
+            this.lstResultados = new System.Windows.Forms.ListBox();
+            this.groupBoxConsultas = new System.Windows.Forms.GroupBox();
+            this.btnAlbumesPorCancion = new System.Windows.Forms.Button();
+            this.cboCancionConsulta = new System.Windows.Forms.ComboBox();
+            this.lblCancionConsulta = new System.Windows.Forms.Label();
+            this.btnDuraciones = new System.Windows.Forms.Button();
+            this.btnAlbumConMasCanciones = new System.Windows.Forms.Button();
+            this.groupBoxAlbum.SuspendLayout();
+            this.groupBoxCancion.SuspendLayout();
+            this.groupBoxListas.SuspendLayout();
+            this.groupBoxConsultas.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBoxRegistro
+            // groupBoxAlbum
             // 
-            this.groupBoxRegistro.Controls.Add(this.btnRegistrar);
-            this.groupBoxRegistro.Controls.Add(this.txtPrecio);
-            this.groupBoxRegistro.Controls.Add(this.txtStock);
-            this.groupBoxRegistro.Controls.Add(this.txtNombre);
-            this.groupBoxRegistro.Controls.Add(this.txtCodigo);
-            this.groupBoxRegistro.Controls.Add(this.lblPrecio);
-            this.groupBoxRegistro.Controls.Add(this.lblStock);
-            this.groupBoxRegistro.Controls.Add(this.lblNombre);
-            this.groupBoxRegistro.Controls.Add(this.lblCodigo);
-            this.groupBoxRegistro.Location = new System.Drawing.Point(12, 12);
-            this.groupBoxRegistro.Name = "groupBoxRegistro";
-            this.groupBoxRegistro.Size = new System.Drawing.Size(370, 205);
-            this.groupBoxRegistro.TabIndex = 0;
-            this.groupBoxRegistro.TabStop = false;
-            this.groupBoxRegistro.Text = "Registro de muebles";
+            this.groupBoxAlbum.Controls.Add(this.btnRegistrarAlbum);
+            this.groupBoxAlbum.Controls.Add(this.txtNombreAlbum);
+            this.groupBoxAlbum.Controls.Add(this.txtCodigoAlbum);
+            this.groupBoxAlbum.Controls.Add(this.lblNombreAlbum);
+            this.groupBoxAlbum.Controls.Add(this.lblCodigoAlbum);
+            this.groupBoxAlbum.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxAlbum.Name = "groupBoxAlbum";
+            this.groupBoxAlbum.Size = new System.Drawing.Size(357, 149);
+            this.groupBoxAlbum.TabIndex = 0;
+            this.groupBoxAlbum.TabStop = false;
+            this.groupBoxAlbum.Text = "Registro de álbum";
             // 
-            // btnRegistrar
+            // btnRegistrarAlbum
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(118, 160);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(228, 30);
-            this.btnRegistrar.TabIndex = 8;
-            this.btnRegistrar.Text = "Registrar mueble";
-            this.btnRegistrar.UseVisualStyleBackColor = true;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            this.btnRegistrarAlbum.Location = new System.Drawing.Point(114, 102);
+            this.btnRegistrarAlbum.Name = "btnRegistrarAlbum";
+            this.btnRegistrarAlbum.Size = new System.Drawing.Size(222, 30);
+            this.btnRegistrarAlbum.TabIndex = 4;
+            this.btnRegistrarAlbum.Text = "Registrar álbum";
+            this.btnRegistrarAlbum.UseVisualStyleBackColor = true;
+            this.btnRegistrarAlbum.Click += new System.EventHandler(this.btnRegistrarAlbum_Click);
             // 
-            // txtPrecio
+            // txtNombreAlbum
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(118, 124);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(228, 22);
-            this.txtPrecio.TabIndex = 7;
+            this.txtNombreAlbum.Location = new System.Drawing.Point(114, 64);
+            this.txtNombreAlbum.Name = "txtNombreAlbum";
+            this.txtNombreAlbum.Size = new System.Drawing.Size(222, 22);
+            this.txtNombreAlbum.TabIndex = 3;
             // 
-            // txtStock
+            // txtCodigoAlbum
             // 
-            this.txtStock.Location = new System.Drawing.Point(118, 92);
-            this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(228, 22);
-            this.txtStock.TabIndex = 6;
+            this.txtCodigoAlbum.Location = new System.Drawing.Point(114, 30);
+            this.txtCodigoAlbum.Name = "txtCodigoAlbum";
+            this.txtCodigoAlbum.Size = new System.Drawing.Size(222, 22);
+            this.txtCodigoAlbum.TabIndex = 2;
             // 
-            // txtNombre
+            // lblNombreAlbum
             // 
-            this.txtNombre.Location = new System.Drawing.Point(118, 60);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(228, 22);
-            this.txtNombre.TabIndex = 5;
+            this.lblNombreAlbum.AutoSize = true;
+            this.lblNombreAlbum.Location = new System.Drawing.Point(18, 67);
+            this.lblNombreAlbum.Name = "lblNombreAlbum";
+            this.lblNombreAlbum.Size = new System.Drawing.Size(56, 16);
+            this.lblNombreAlbum.TabIndex = 1;
+            this.lblNombreAlbum.Text = "Nombre";
             // 
-            // txtCodigo
+            // lblCodigoAlbum
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(118, 28);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(228, 22);
-            this.txtCodigo.TabIndex = 4;
+            this.lblCodigoAlbum.AutoSize = true;
+            this.lblCodigoAlbum.Location = new System.Drawing.Point(18, 33);
+            this.lblCodigoAlbum.Name = "lblCodigoAlbum";
+            this.lblCodigoAlbum.Size = new System.Drawing.Size(52, 16);
+            this.lblCodigoAlbum.TabIndex = 0;
+            this.lblCodigoAlbum.Text = "Código";
             // 
-            // lblPrecio
+            // groupBoxCancion
             // 
-            this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(20, 127);
-            this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(46, 16);
-            this.lblPrecio.TabIndex = 3;
-            this.lblPrecio.Text = "Precio";
+            this.groupBoxCancion.Controls.Add(this.cboAlbumCancion);
+            this.groupBoxCancion.Controls.Add(this.lblAlbumCancion);
+            this.groupBoxCancion.Controls.Add(this.btnRegistrarCancion);
+            this.groupBoxCancion.Controls.Add(this.txtDuracionCancion);
+            this.groupBoxCancion.Controls.Add(this.txtNombreCancion);
+            this.groupBoxCancion.Controls.Add(this.txtCodigoCancion);
+            this.groupBoxCancion.Controls.Add(this.lblDuracionCancion);
+            this.groupBoxCancion.Controls.Add(this.lblNombreCancion);
+            this.groupBoxCancion.Controls.Add(this.lblCodigoCancion);
+            this.groupBoxCancion.Location = new System.Drawing.Point(12, 167);
+            this.groupBoxCancion.Name = "groupBoxCancion";
+            this.groupBoxCancion.Size = new System.Drawing.Size(357, 228);
+            this.groupBoxCancion.TabIndex = 1;
+            this.groupBoxCancion.TabStop = false;
+            this.groupBoxCancion.Text = "Registro de canción";
             // 
-            // lblStock
+            // cboAlbumCancion
             // 
-            this.lblStock.AutoSize = true;
-            this.lblStock.Location = new System.Drawing.Point(20, 95);
-            this.lblStock.Name = "lblStock";
-            this.lblStock.Size = new System.Drawing.Size(41, 16);
-            this.lblStock.TabIndex = 2;
-            this.lblStock.Text = "Stock";
+            this.cboAlbumCancion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAlbumCancion.FormattingEnabled = true;
+            this.cboAlbumCancion.Location = new System.Drawing.Point(114, 136);
+            this.cboAlbumCancion.Name = "cboAlbumCancion";
+            this.cboAlbumCancion.Size = new System.Drawing.Size(222, 24);
+            this.cboAlbumCancion.TabIndex = 8;
             // 
-            // lblNombre
+            // lblAlbumCancion
             // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(20, 63);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(56, 16);
-            this.lblNombre.TabIndex = 1;
-            this.lblNombre.Text = "Nombre";
+            this.lblAlbumCancion.AutoSize = true;
+            this.lblAlbumCancion.Location = new System.Drawing.Point(18, 139);
+            this.lblAlbumCancion.Name = "lblAlbumCancion";
+            this.lblAlbumCancion.Size = new System.Drawing.Size(45, 16);
+            this.lblAlbumCancion.TabIndex = 7;
+            this.lblAlbumCancion.Text = "Álbum";
             // 
-            // lblCodigo
+            // btnRegistrarCancion
             // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(20, 31);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(52, 16);
-            this.lblCodigo.TabIndex = 0;
-            this.lblCodigo.Text = "Código";
+            this.btnRegistrarCancion.Location = new System.Drawing.Point(114, 180);
+            this.btnRegistrarCancion.Name = "btnRegistrarCancion";
+            this.btnRegistrarCancion.Size = new System.Drawing.Size(222, 30);
+            this.btnRegistrarCancion.TabIndex = 6;
+            this.btnRegistrarCancion.Text = "Registrar canción";
+            this.btnRegistrarCancion.UseVisualStyleBackColor = true;
+            this.btnRegistrarCancion.Click += new System.EventHandler(this.btnRegistrarCancion_Click);
             // 
-            // groupBoxOperaciones
+            // txtDuracionCancion
             // 
-            this.groupBoxOperaciones.Controls.Add(this.btnOrdenar);
-            this.groupBoxOperaciones.Controls.Add(this.btnEliminarTodos);
-            this.groupBoxOperaciones.Controls.Add(this.btnEliminar);
-            this.groupBoxOperaciones.Controls.Add(this.btnBuscar);
-            this.groupBoxOperaciones.Controls.Add(this.txtBuscar);
-            this.groupBoxOperaciones.Controls.Add(this.lblBuscar);
-            this.groupBoxOperaciones.Location = new System.Drawing.Point(12, 223);
-            this.groupBoxOperaciones.Name = "groupBoxOperaciones";
-            this.groupBoxOperaciones.Size = new System.Drawing.Size(370, 172);
-            this.groupBoxOperaciones.TabIndex = 1;
-            this.groupBoxOperaciones.TabStop = false;
-            this.groupBoxOperaciones.Text = "Operaciones";
+            this.txtDuracionCancion.Location = new System.Drawing.Point(114, 100);
+            this.txtDuracionCancion.Name = "txtDuracionCancion";
+            this.txtDuracionCancion.Size = new System.Drawing.Size(222, 22);
+            this.txtDuracionCancion.TabIndex = 5;
             // 
-            // btnOrdenar
+            // txtNombreCancion
             // 
-            this.btnOrdenar.Location = new System.Drawing.Point(23, 128);
-            this.btnOrdenar.Name = "btnOrdenar";
-            this.btnOrdenar.Size = new System.Drawing.Size(323, 30);
-            this.btnOrdenar.TabIndex = 5;
-            this.btnOrdenar.Text = "Ordenar por precio (descendente)";
-            this.btnOrdenar.UseVisualStyleBackColor = true;
-            this.btnOrdenar.Click += new System.EventHandler(this.btnOrdenar_Click);
+            this.txtNombreCancion.Location = new System.Drawing.Point(114, 64);
+            this.txtNombreCancion.Name = "txtNombreCancion";
+            this.txtNombreCancion.Size = new System.Drawing.Size(222, 22);
+            this.txtNombreCancion.TabIndex = 4;
             // 
-            // btnEliminarTodos
+            // txtCodigoCancion
             // 
-            this.btnEliminarTodos.Location = new System.Drawing.Point(187, 85);
-            this.btnEliminarTodos.Name = "btnEliminarTodos";
-            this.btnEliminarTodos.Size = new System.Drawing.Size(159, 30);
-            this.btnEliminarTodos.TabIndex = 4;
-            this.btnEliminarTodos.Text = "Eliminar todos";
-            this.btnEliminarTodos.UseVisualStyleBackColor = true;
-            this.btnEliminarTodos.Click += new System.EventHandler(this.btnEliminarTodos_Click);
+            this.txtCodigoCancion.Location = new System.Drawing.Point(114, 30);
+            this.txtCodigoCancion.Name = "txtCodigoCancion";
+            this.txtCodigoCancion.Size = new System.Drawing.Size(222, 22);
+            this.txtCodigoCancion.TabIndex = 3;
             // 
-            // btnEliminar
+            // lblDuracionCancion
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(23, 85);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(159, 30);
-            this.btnEliminar.TabIndex = 3;
-            this.btnEliminar.Text = "Eliminar seleccionado";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.lblDuracionCancion.AutoSize = true;
+            this.lblDuracionCancion.Location = new System.Drawing.Point(18, 103);
+            this.lblDuracionCancion.Name = "lblDuracionCancion";
+            this.lblDuracionCancion.Size = new System.Drawing.Size(62, 16);
+            this.lblDuracionCancion.TabIndex = 2;
+            this.lblDuracionCancion.Text = "Duración";
             // 
-            // btnBuscar
+            // lblNombreCancion
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(266, 38);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(80, 30);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.lblNombreCancion.AutoSize = true;
+            this.lblNombreCancion.Location = new System.Drawing.Point(18, 67);
+            this.lblNombreCancion.Name = "lblNombreCancion";
+            this.lblNombreCancion.Size = new System.Drawing.Size(56, 16);
+            this.lblNombreCancion.TabIndex = 1;
+            this.lblNombreCancion.Text = "Nombre";
             // 
-            // txtBuscar
+            // lblCodigoCancion
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(88, 42);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(172, 22);
-            this.txtBuscar.TabIndex = 1;
+            this.lblCodigoCancion.AutoSize = true;
+            this.lblCodigoCancion.Location = new System.Drawing.Point(18, 33);
+            this.lblCodigoCancion.Name = "lblCodigoCancion";
+            this.lblCodigoCancion.Size = new System.Drawing.Size(52, 16);
+            this.lblCodigoCancion.TabIndex = 0;
+            this.lblCodigoCancion.Text = "Código";
             // 
-            // lblBuscar
+            // groupBoxListas
             // 
-            this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(20, 45);
-            this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(50, 16);
-            this.lblBuscar.TabIndex = 0;
-            this.lblBuscar.Text = "Buscar";
+            this.groupBoxListas.Controls.Add(this.btnVerCancionesAlbum);
+            this.groupBoxListas.Controls.Add(this.cboAlbumConsulta);
+            this.groupBoxListas.Controls.Add(this.lblAlbumConsulta);
+            this.groupBoxListas.Controls.Add(this.btnMostrarCanciones);
+            this.groupBoxListas.Controls.Add(this.btnMostrarAlbumes);
+            this.groupBoxListas.Controls.Add(this.lstResultados);
+            this.groupBoxListas.Location = new System.Drawing.Point(390, 12);
+            this.groupBoxListas.Name = "groupBoxListas";
+            this.groupBoxListas.Size = new System.Drawing.Size(534, 300);
+            this.groupBoxListas.TabIndex = 2;
+            this.groupBoxListas.TabStop = false;
+            this.groupBoxListas.Text = "Listas";
             // 
-            // dgvMuebles
+            // btnVerCancionesAlbum
             // 
-            this.dgvMuebles.AllowUserToAddRows = false;
-            this.dgvMuebles.AllowUserToDeleteRows = false;
-            this.dgvMuebles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMuebles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMuebles.Location = new System.Drawing.Point(401, 21);
-            this.dgvMuebles.MultiSelect = false;
-            this.dgvMuebles.Name = "dgvMuebles";
-            this.dgvMuebles.ReadOnly = true;
-            this.dgvMuebles.RowHeadersWidth = 51;
-            this.dgvMuebles.RowTemplate.Height = 24;
-            this.dgvMuebles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMuebles.Size = new System.Drawing.Size(545, 324);
-            this.dgvMuebles.TabIndex = 2;
+            this.btnVerCancionesAlbum.Location = new System.Drawing.Point(355, 257);
+            this.btnVerCancionesAlbum.Name = "btnVerCancionesAlbum";
+            this.btnVerCancionesAlbum.Size = new System.Drawing.Size(159, 30);
+            this.btnVerCancionesAlbum.TabIndex = 5;
+            this.btnVerCancionesAlbum.Text = "Ver canciones";
+            this.btnVerCancionesAlbum.UseVisualStyleBackColor = true;
+            this.btnVerCancionesAlbum.Click += new System.EventHandler(this.btnVerCancionesAlbum_Click);
             // 
-            // lblTotalMueblesTitulo
+            // cboAlbumConsulta
             // 
-            this.lblTotalMueblesTitulo.AutoSize = true;
-            this.lblTotalMueblesTitulo.Location = new System.Drawing.Point(398, 363);
-            this.lblTotalMueblesTitulo.Name = "lblTotalMueblesTitulo";
-            this.lblTotalMueblesTitulo.Size = new System.Drawing.Size(169, 16);
-            this.lblTotalMueblesTitulo.TabIndex = 3;
-            this.lblTotalMueblesTitulo.Text = "Total muebles registrados:";
+            this.cboAlbumConsulta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAlbumConsulta.FormattingEnabled = true;
+            this.cboAlbumConsulta.Location = new System.Drawing.Point(120, 260);
+            this.cboAlbumConsulta.Name = "cboAlbumConsulta";
+            this.cboAlbumConsulta.Size = new System.Drawing.Size(219, 24);
+            this.cboAlbumConsulta.TabIndex = 4;
             // 
-            // lblTotalStockTitulo
+            // lblAlbumConsulta
             // 
-            this.lblTotalStockTitulo.AutoSize = true;
-            this.lblTotalStockTitulo.Location = new System.Drawing.Point(398, 389);
-            this.lblTotalStockTitulo.Name = "lblTotalStockTitulo";
-            this.lblTotalStockTitulo.Size = new System.Drawing.Size(145, 16);
-            this.lblTotalStockTitulo.TabIndex = 4;
-            this.lblTotalStockTitulo.Text = "Total unidades en stock:";
+            this.lblAlbumConsulta.AutoSize = true;
+            this.lblAlbumConsulta.Location = new System.Drawing.Point(18, 263);
+            this.lblAlbumConsulta.Name = "lblAlbumConsulta";
+            this.lblAlbumConsulta.Size = new System.Drawing.Size(94, 16);
+            this.lblAlbumConsulta.TabIndex = 3;
+            this.lblAlbumConsulta.Text = "Álbum elegido";
             // 
-            // lblTotalMuebles
+            // btnMostrarCanciones
             // 
-            this.lblTotalMuebles.Location = new System.Drawing.Point(582, 359);
-            this.lblTotalMuebles.Name = "lblTotalMuebles";
-            this.lblTotalMuebles.Size = new System.Drawing.Size(95, 23);
-            this.lblTotalMuebles.TabIndex = 5;
-            this.lblTotalMuebles.Text = "0";
-            this.lblTotalMuebles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMostrarCanciones.Location = new System.Drawing.Point(273, 28);
+            this.btnMostrarCanciones.Name = "btnMostrarCanciones";
+            this.btnMostrarCanciones.Size = new System.Drawing.Size(241, 30);
+            this.btnMostrarCanciones.TabIndex = 2;
+            this.btnMostrarCanciones.Text = "Mostrar nombres de canciones";
+            this.btnMostrarCanciones.UseVisualStyleBackColor = true;
+            this.btnMostrarCanciones.Click += new System.EventHandler(this.btnMostrarCanciones_Click);
             // 
-            // lblTotalStock
+            // btnMostrarAlbumes
             // 
-            this.lblTotalStock.Location = new System.Drawing.Point(582, 385);
-            this.lblTotalStock.Name = "lblTotalStock";
-            this.lblTotalStock.Size = new System.Drawing.Size(95, 23);
-            this.lblTotalStock.TabIndex = 6;
-            this.lblTotalStock.Text = "0";
-            this.lblTotalStock.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMostrarAlbumes.Location = new System.Drawing.Point(21, 28);
+            this.btnMostrarAlbumes.Name = "btnMostrarAlbumes";
+            this.btnMostrarAlbumes.Size = new System.Drawing.Size(237, 30);
+            this.btnMostrarAlbumes.TabIndex = 1;
+            this.btnMostrarAlbumes.Text = "Mostrar álbumes";
+            this.btnMostrarAlbumes.UseVisualStyleBackColor = true;
+            this.btnMostrarAlbumes.Click += new System.EventHandler(this.btnMostrarAlbumes_Click);
+            // 
+            // lstResultados
+            // 
+            this.lstResultados.FormattingEnabled = true;
+            this.lstResultados.ItemHeight = 16;
+            this.lstResultados.Location = new System.Drawing.Point(21, 72);
+            this.lstResultados.Name = "lstResultados";
+            this.lstResultados.Size = new System.Drawing.Size(493, 164);
+            this.lstResultados.TabIndex = 0;
+            // 
+            // groupBoxConsultas
+            // 
+            this.groupBoxConsultas.Controls.Add(this.btnAlbumesPorCancion);
+            this.groupBoxConsultas.Controls.Add(this.cboCancionConsulta);
+            this.groupBoxConsultas.Controls.Add(this.lblCancionConsulta);
+            this.groupBoxConsultas.Controls.Add(this.btnDuraciones);
+            this.groupBoxConsultas.Controls.Add(this.btnAlbumConMasCanciones);
+            this.groupBoxConsultas.Location = new System.Drawing.Point(390, 318);
+            this.groupBoxConsultas.Name = "groupBoxConsultas";
+            this.groupBoxConsultas.Size = new System.Drawing.Size(534, 151);
+            this.groupBoxConsultas.TabIndex = 3;
+            this.groupBoxConsultas.TabStop = false;
+            this.groupBoxConsultas.Text = "Consultas";
+            // 
+            // btnAlbumesPorCancion
+            // 
+            this.btnAlbumesPorCancion.Location = new System.Drawing.Point(355, 99);
+            this.btnAlbumesPorCancion.Name = "btnAlbumesPorCancion";
+            this.btnAlbumesPorCancion.Size = new System.Drawing.Size(159, 30);
+            this.btnAlbumesPorCancion.TabIndex = 4;
+            this.btnAlbumesPorCancion.Text = "Buscar álbumes";
+            this.btnAlbumesPorCancion.UseVisualStyleBackColor = true;
+            this.btnAlbumesPorCancion.Click += new System.EventHandler(this.btnAlbumesPorCancion_Click);
+            // 
+            // cboCancionConsulta
+            // 
+            this.cboCancionConsulta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCancionConsulta.FormattingEnabled = true;
+            this.cboCancionConsulta.Location = new System.Drawing.Point(120, 102);
+            this.cboCancionConsulta.Name = "cboCancionConsulta";
+            this.cboCancionConsulta.Size = new System.Drawing.Size(219, 24);
+            this.cboCancionConsulta.TabIndex = 3;
+            // 
+            // lblCancionConsulta
+            // 
+            this.lblCancionConsulta.AutoSize = true;
+            this.lblCancionConsulta.Location = new System.Drawing.Point(18, 105);
+            this.lblCancionConsulta.Name = "lblCancionConsulta";
+            this.lblCancionConsulta.Size = new System.Drawing.Size(99, 16);
+            this.lblCancionConsulta.TabIndex = 2;
+            this.lblCancionConsulta.Text = "Canción (cód.)";
+            // 
+            // btnDuraciones
+            // 
+            this.btnDuraciones.Location = new System.Drawing.Point(273, 33);
+            this.btnDuraciones.Name = "btnDuraciones";
+            this.btnDuraciones.Size = new System.Drawing.Size(241, 36);
+            this.btnDuraciones.TabIndex = 1;
+            this.btnDuraciones.Text = "Canción de mayor y menor duración";
+            this.btnDuraciones.UseVisualStyleBackColor = true;
+            this.btnDuraciones.Click += new System.EventHandler(this.btnDuraciones_Click);
+            // 
+            // btnAlbumConMasCanciones
+            // 
+            this.btnAlbumConMasCanciones.Location = new System.Drawing.Point(21, 33);
+            this.btnAlbumConMasCanciones.Name = "btnAlbumConMasCanciones";
+            this.btnAlbumConMasCanciones.Size = new System.Drawing.Size(237, 36);
+            this.btnAlbumConMasCanciones.TabIndex = 0;
+            this.btnAlbumConMasCanciones.Text = "Álbum con más canciones";
+            this.btnAlbumConMasCanciones.UseVisualStyleBackColor = true;
+            this.btnAlbumConMasCanciones.Click += new System.EventHandler(this.btnAlbumConMasCanciones_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 421);
-            this.Controls.Add(this.lblTotalStock);
-            this.Controls.Add(this.lblTotalMuebles);
-            this.Controls.Add(this.lblTotalStockTitulo);
-            this.Controls.Add(this.lblTotalMueblesTitulo);
-            this.Controls.Add(this.dgvMuebles);
-            this.Controls.Add(this.groupBoxOperaciones);
-            this.Controls.Add(this.groupBoxRegistro);
+            this.ClientSize = new System.Drawing.Size(938, 481);
+            this.Controls.Add(this.groupBoxConsultas);
+            this.Controls.Add(this.groupBoxListas);
+            this.Controls.Add(this.groupBoxCancion);
+            this.Controls.Add(this.groupBoxAlbum);
             this.Name = "Form1";
-            this.Text = "Sistema de Inventario - Tienda de Muebles";
+            this.Text = "Gestión de álbumes musicales";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBoxRegistro.ResumeLayout(false);
-            this.groupBoxRegistro.PerformLayout();
-            this.groupBoxOperaciones.ResumeLayout(false);
-            this.groupBoxOperaciones.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMuebles)).EndInit();
+            this.groupBoxAlbum.ResumeLayout(false);
+            this.groupBoxAlbum.PerformLayout();
+            this.groupBoxCancion.ResumeLayout(false);
+            this.groupBoxCancion.PerformLayout();
+            this.groupBoxListas.ResumeLayout(false);
+            this.groupBoxListas.PerformLayout();
+            this.groupBoxConsultas.ResumeLayout(false);
+            this.groupBoxConsultas.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBoxRegistro;
-        private System.Windows.Forms.Button btnRegistrar;
-        private System.Windows.Forms.TextBox txtPrecio;
-        private System.Windows.Forms.TextBox txtStock;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.Label lblPrecio;
-        private System.Windows.Forms.Label lblStock;
-        private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblCodigo;
-        private System.Windows.Forms.GroupBox groupBoxOperaciones;
-        private System.Windows.Forms.Button btnOrdenar;
-        private System.Windows.Forms.Button btnEliminarTodos;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Label lblBuscar;
-        private System.Windows.Forms.DataGridView dgvMuebles;
-        private System.Windows.Forms.Label lblTotalMueblesTitulo;
-        private System.Windows.Forms.Label lblTotalStockTitulo;
-        private System.Windows.Forms.Label lblTotalMuebles;
-        private System.Windows.Forms.Label lblTotalStock;
+        private System.Windows.Forms.GroupBox groupBoxAlbum;
+        private System.Windows.Forms.Button btnRegistrarAlbum;
+        private System.Windows.Forms.TextBox txtNombreAlbum;
+        private System.Windows.Forms.TextBox txtCodigoAlbum;
+        private System.Windows.Forms.Label lblNombreAlbum;
+        private System.Windows.Forms.Label lblCodigoAlbum;
+        private System.Windows.Forms.GroupBox groupBoxCancion;
+        private System.Windows.Forms.ComboBox cboAlbumCancion;
+        private System.Windows.Forms.Label lblAlbumCancion;
+        private System.Windows.Forms.Button btnRegistrarCancion;
+        private System.Windows.Forms.TextBox txtDuracionCancion;
+        private System.Windows.Forms.TextBox txtNombreCancion;
+        private System.Windows.Forms.TextBox txtCodigoCancion;
+        private System.Windows.Forms.Label lblDuracionCancion;
+        private System.Windows.Forms.Label lblNombreCancion;
+        private System.Windows.Forms.Label lblCodigoCancion;
+        private System.Windows.Forms.GroupBox groupBoxListas;
+        private System.Windows.Forms.Button btnVerCancionesAlbum;
+        private System.Windows.Forms.ComboBox cboAlbumConsulta;
+        private System.Windows.Forms.Label lblAlbumConsulta;
+        private System.Windows.Forms.Button btnMostrarCanciones;
+        private System.Windows.Forms.Button btnMostrarAlbumes;
+        private System.Windows.Forms.ListBox lstResultados;
+        private System.Windows.Forms.GroupBox groupBoxConsultas;
+        private System.Windows.Forms.Button btnAlbumesPorCancion;
+        private System.Windows.Forms.ComboBox cboCancionConsulta;
+        private System.Windows.Forms.Label lblCancionConsulta;
+        private System.Windows.Forms.Button btnDuraciones;
+        private System.Windows.Forms.Button btnAlbumConMasCanciones;
     }
 }
