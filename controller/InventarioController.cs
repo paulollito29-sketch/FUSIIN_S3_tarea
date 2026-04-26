@@ -5,76 +5,115 @@ using FUSIIN_S2_Ejercicio1.entity;
 
 namespace FUSIIN_S2_Ejercicio1.controller
 {
-    internal class InventarioController
+    internal class DisqueraController
     {
-        private readonly List<Mueble> muebles = new List<Mueble>();
+        private readonly List<Album> albumes = new List<Album>();
 
-        public bool Registrar(Mueble mueble)
+        public bool RegistrarAlbum(Album album)
         {
-            if (mueble == null)
+            if (album == null)
             {
                 return false;
             }
 
-            bool existeCodigo = muebles.Any(x =>
-                string.Equals(x.Codigo, mueble.Codigo, StringComparison.OrdinalIgnoreCase));
-
-            if (existeCodigo)
+            bool existe = albumes.Any(a => a.Codigo.Equals(album.Codigo, StringComparison.OrdinalIgnoreCase));
+            if (existe)
             {
                 return false;
             }
 
-            muebles.Add(mueble);
+            albumes.Add(album);
             return true;
         }
 
-        public List<Mueble> ObtenerTodos()
+        public List<Album> ObtenerAlbumes()
         {
-            return muebles
-                .OrderByDescending(m => m.Precio)
+            return albumes
+                .OrderBy(a => a.Nombre)
                 .ToList();
         }
 
-        public List<Mueble> BuscarPorNombre(string termino)
+        public Album BuscarAlbumPorCodigo(string codigo)
         {
-            if (string.IsNullOrWhiteSpace(termino))
-            {
-                return ObtenerTodos();
-            }
-
-            return muebles
-                .Where(m => m.Nombre.IndexOf(termino, StringComparison.OrdinalIgnoreCase) >= 0)
-                .OrderByDescending(m => m.Precio)
-                .ToList();
+            return albumes.FirstOrDefault(a => a.Codigo.Equals(codigo, StringComparison.OrdinalIgnoreCase));
         }
 
-        public bool EliminarPorCodigo(string codigo)
+        public bool RegistrarCancionEnAlbum(string codigoAlbum, Cancion cancion)
         {
-            Mueble mueble = muebles.FirstOrDefault(x =>
-                string.Equals(x.Codigo, codigo, StringComparison.OrdinalIgnoreCase));
-
-            if (mueble == null)
+            Album album = BuscarAlbumPorCodigo(codigoAlbum);
+            if (album == null)
             {
                 return false;
             }
 
-            muebles.Remove(mueble);
-            return true;
+            return album.AgregarCancion(cancion);
         }
 
-        public void EliminarTodos()
+        public List<string> ObtenerNombresCanciones()
         {
-            muebles.Clear();
+            return albumes
+                .SelectMany(a => a.Canciones)
+                .Select(c => c.Nombre)
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .OrderBy(n => n)
+                .ToList();
         }
 
-        public int TotalMueblesRegistrados()
+        public List<string> ObtenerNombresCancionesPorAlbum(string codigoAlbum)
         {
-            return muebles.Count;
+            Album album = BuscarAlbumPorCodigo(codigoAlbum);
+            if (album == null)
+            {
+                return new List<string>();
+            }
+
+            return album.Canciones
+                .Select(c => c.Nombre)
+                .OrderBy(n => n)
+                .ToList();
         }
 
-        public int TotalStock()
+        public Album ObtenerAlbumConMasCanciones()
         {
-            return muebles.Sum(m => m.Stock);
+            if (!albumes.Any())
+            {
+                return null;
+            }
+
+            return albumes
+                .OrderByDescending(a => a.Canciones.Count)
+                .ThenBy(a => a.Nombre)
+                .First();
+        }
+
+        public List<string> ObtenerAlbumesDondeEstaCancion(string codigoCancion)
+        {
+            return albumes
+                .Where(a => a.Canciones.Any(c => c.Codigo.Equals(codigoCancion, StringComparison.OrdinalIgnoreCase)))
+                .Select(a => a.Nombre)
+                .OrderBy(n => n)
+                .ToList();
+        }
+
+        public (Cancion mayor, Cancion menor) ObtenerCancionMayorYMenorDuracion()
+        {
+            var canciones = albumes
+                .SelectMany(a => a.Canciones)
+                .ToList();
+
+            if (!canciones.Any())
+            {
+                return (null, null);
+            }
+
+            Cancion mayor = canciones
+                .OrderByDescending(c => c.Duracion)
+                .First();
+            Cancion menor = canciones
+                .OrderBy(c => c.Duracion)
+                .First();
+
+            return (mayor, menor);
         }
     }
 }
