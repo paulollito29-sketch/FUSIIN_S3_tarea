@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controller\CatalogoMusicalController.cs" />
-    <Compile Include="entity\Album.cs" />
-    <Compile Include="entity\Cancion.cs" />
+    <Compile Include="controller\GestionVideojuegosController.cs" />
+    <Compile Include="entity\Jugador.cs" />
+    <Compile Include="entity\Videojuego.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
