@@ -7,61 +7,54 @@ namespace FUSIIN_S2_Ejercicio1.controller
 {
     internal class GestionVideojuegosController
     {
-        private readonly List<Videojuego> videojuegos = new List<Videojuego>();
-        private readonly List<Jugador> jugadores = new List<Jugador>();
+        private readonly List<Torneo> torneos = new List<Torneo>();
+        private readonly List<Equipo> equipos = new List<Equipo>();
 
-        public bool RegistrarVideojuego(Videojuego videojuego)
+        public bool RegistrarTorneo(Torneo torneo)
         {
-            if (videojuego == null) return false;
+            if (torneo == null) return false;
 
-            bool existe = videojuegos.Any(v => v.Codigo.Equals(videojuego.Codigo, StringComparison.OrdinalIgnoreCase));
+            bool existe = torneos.Any(t => t.Codigo.Equals(torneo.Codigo, StringComparison.OrdinalIgnoreCase));
             if (existe) return false;
 
-            videojuegos.Add(videojuego);
+            torneos.Add(torneo);
             return true;
         }
 
-        public bool RegistrarJugadorEnVideojuego(string codigoVideojuego, Jugador jugador)
+        public bool RegistrarEquipoEnTorneo(string codigoTorneo, Equipo equipo)
         {
-            if (jugador == null) return false;
+            if (equipo == null) return false;
 
-            bool dniExistente = jugadores.Any(j => j.Dni.Equals(jugador.Dni, StringComparison.OrdinalIgnoreCase));
+            bool dniExistente = equipos.Any(e => e.DniDelegado.Equals(equipo.DniDelegado, StringComparison.OrdinalIgnoreCase));
             if (dniExistente) return false;
 
-            Videojuego videojuego = videojuegos.FirstOrDefault(v => v.Codigo.Equals(codigoVideojuego, StringComparison.OrdinalIgnoreCase));
-            if (videojuego == null) return false;
+            Torneo torneo = torneos.FirstOrDefault(t => t.Codigo.Equals(codigoTorneo, StringComparison.OrdinalIgnoreCase));
+            if (torneo == null) return false;
 
-            jugadores.Add(jugador);
-            videojuego.Jugadores.Add(jugador);
+            equipos.Add(equipo);
+            torneo.Equipos.Add(equipo);
             return true;
         }
 
-        public List<Videojuego> ObtenerVideojuegos()
-        {
-            return videojuegos.OrderBy(v => v.Nombre).ToList();
-        }
+        public List<Torneo> ObtenerTorneos() => torneos.OrderBy(t => t.Nombre).ToList();
 
-        public List<Jugador> ObtenerJugadores()
-        {
-            return jugadores.OrderBy(j => j.Alias).ToList();
-        }
+        public List<Equipo> ObtenerEquipos() => equipos.OrderBy(e => e.NombreEquipo).ToList();
 
-        public List<Videojuego> ObtenerVideojuegosPorDni(string dni)
+        public List<Torneo> ObtenerTorneosPorDniDelegado(string dni)
         {
-            return videojuegos
-                .Where(v => v.Jugadores.Any(j => j.Dni.Equals(dni, StringComparison.OrdinalIgnoreCase)))
-                .OrderBy(v => v.Nombre)
+            return torneos
+                .Where(t => t.Equipos.Any(e => e.DniDelegado.Equals(dni, StringComparison.OrdinalIgnoreCase)))
+                .OrderBy(t => t.Nombre)
                 .ToList();
         }
 
-        public List<Videojuego> ObtenerVideojuegosConMasJugadores()
+        public List<Equipo> ObtenerTopEquiposPorPuntos(int limite = 5)
         {
-            if (!videojuegos.Any()) return new List<Videojuego>();
-
-            int maxJugadores = videojuegos.Max(v => v.Jugadores.Count);
-            return videojuegos
-                .Where(v => v.Jugadores.Count == maxJugadores && maxJugadores > 0)
-                .OrderBy(v => v.Nombre)
+            return equipos
+                .OrderByDescending(e => e.Puntos)
+                .ThenByDescending(e => e.PartidosGanados)
+                .ThenBy(e => e.NombreEquipo)
+                .Take(limite)
                 .ToList();
         }
     }

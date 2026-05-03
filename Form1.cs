@@ -17,7 +17,7 @@ namespace FUSIIN_S2_Ejercicio1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            RefrescarComboVideojuegos();
+            RefrescarComboTorneos();
         }
 
         private void btnRegistrarVideojuego_Click(object sender, EventArgs e)
@@ -27,55 +27,68 @@ namespace FUSIIN_S2_Ejercicio1
 
             if (string.IsNullOrWhiteSpace(codigo) || string.IsNullOrWhiteSpace(nombre))
             {
-                MessageBox.Show("Ingrese código y nombre del videojuego.");
+                MessageBox.Show("Ingrese código y nombre del torneo.");
                 return;
             }
 
-            bool ok = controller.RegistrarVideojuego(new Videojuego { Codigo = codigo, Nombre = nombre });
+            bool ok = controller.RegistrarTorneo(new Torneo
+            {
+                Codigo = codigo,
+                Nombre = nombre,
+                Deporte = "Fútbol",
+                FechaInicio = DateTime.Now,
+                Estado = "Activo"
+            });
+
             if (!ok)
             {
-                MessageBox.Show("Ya existe un videojuego con ese código.");
+                MessageBox.Show("Ya existe un torneo con ese código.");
                 return;
             }
 
             txtCodigoVideojuego.Clear();
             txtNombreVideojuego.Clear();
-            RefrescarComboVideojuegos();
-            CargarGrillaVideojuegos();
+            RefrescarComboTorneos();
+            CargarGrillaTorneos();
         }
 
         private void btnRegistrarJugador_Click(object sender, EventArgs e)
         {
             if (!(cboVideojuegos.SelectedItem is ComboBoxOption opcion))
             {
-                MessageBox.Show("Seleccione un videojuego.");
+                MessageBox.Show("Seleccione un torneo.");
                 return;
             }
 
             string dni = txtDniJugador.Text.Trim();
-            string alias = txtAliasJugador.Text.Trim();
-            if (string.IsNullOrWhiteSpace(dni) || string.IsNullOrWhiteSpace(alias))
+            string nombreEquipo = txtAliasJugador.Text.Trim();
+            if (string.IsNullOrWhiteSpace(dni) || string.IsNullOrWhiteSpace(nombreEquipo))
             {
-                MessageBox.Show("Ingrese DNI y alias del jugador.");
+                MessageBox.Show("Ingrese DNI del delegado y nombre del equipo.");
                 return;
             }
 
-            bool ok = controller.RegistrarJugadorEnVideojuego(opcion.Value, new Jugador { Dni = dni, Alias = alias });
+            bool ok = controller.RegistrarEquipoEnTorneo(opcion.Value, new Equipo
+            {
+                DniDelegado = dni,
+                NombreEquipo = nombreEquipo
+            });
+
             if (!ok)
             {
-                MessageBox.Show("No se pudo registrar. Verifique DNI duplicado o videojuego inexistente.");
+                MessageBox.Show("No se pudo registrar. Verifique DNI de delegado duplicado o torneo inexistente.");
                 return;
             }
 
             txtDniJugador.Clear();
             txtAliasJugador.Clear();
-            CargarGrillaJugadores();
-            CargarGrillaVideojuegos();
+            CargarGrillaEquipos();
+            CargarGrillaTorneos();
         }
 
-        private void btnMostrarVideojuegos_Click(object sender, EventArgs e) => CargarGrillaVideojuegos();
+        private void btnMostrarVideojuegos_Click(object sender, EventArgs e) => CargarGrillaTorneos();
 
-        private void btnMostrarJugadores_Click(object sender, EventArgs e) => CargarGrillaJugadores();
+        private void btnMostrarJugadores_Click(object sender, EventArgs e) => CargarGrillaEquipos();
 
         private void btnBuscarPorDni_Click(object sender, EventArgs e)
         {
@@ -86,53 +99,66 @@ namespace FUSIIN_S2_Ejercicio1
                 return;
             }
 
-            var juegos = controller.ObtenerVideojuegosPorDni(dni);
-            dgvResultados.DataSource = juegos.Select(v => new
+            var torneos = controller.ObtenerTorneosPorDniDelegado(dni);
+            dgvResultados.DataSource = torneos.Select(t => new
             {
-                CodigoVideojuego = v.Codigo,
-                NombreVideojuego = v.Nombre,
-                CantidadJugadores = v.Jugadores.Count
+                CodigoTorneo = t.Codigo,
+                NombreTorneo = t.Nombre,
+                Deporte = t.Deporte,
+                EquiposInscriptos = t.Equipos.Count
             }).ToList();
         }
 
         private void btnTopVideojuegos_Click(object sender, EventArgs e)
         {
-            var top = controller.ObtenerVideojuegosConMasJugadores();
-            dgvResultados.DataSource = top.Select(v => new
+            var top = controller.ObtenerTopEquiposPorPuntos();
+            dgvResultados.DataSource = top.Select(equipo => new
             {
-                CodigoVideojuego = v.Codigo,
-                NombreVideojuego = v.Nombre,
-                CantidadJugadores = v.Jugadores.Count
+                Equipo = equipo.NombreEquipo,
+                DelegadoDNI = equipo.DniDelegado,
+                PJ = equipo.PartidosJugados,
+                PG = equipo.PartidosGanados,
+                PE = equipo.PartidosEmpatados,
+                PP = equipo.PartidosPerdidos,
+                Puntos = equipo.Puntos
             }).ToList();
         }
 
-        private void CargarGrillaVideojuegos()
+        private void CargarGrillaTorneos()
         {
-            dgvVideojuegos.DataSource = controller.ObtenerVideojuegos()
-                .Select(v => new
+            dgvVideojuegos.DataSource = controller.ObtenerTorneos()
+                .Select(t => new
                 {
-                    CodigoVideojuego = v.Codigo,
-                    NombreVideojuego = v.Nombre,
-                    CantidadJugadores = v.Jugadores.Count
+                    CodigoTorneo = t.Codigo,
+                    NombreTorneo = t.Nombre,
+                    Deporte = t.Deporte,
+                    FechaInicio = t.FechaInicio,
+                    Estado = t.Estado,
+                    Equipos = t.Equipos.Count
                 })
                 .ToList();
         }
 
-        private void CargarGrillaJugadores()
+        private void CargarGrillaEquipos()
         {
-            dgvJugadores.DataSource = controller.ObtenerJugadores()
-                .Select(j => new
+            dgvJugadores.DataSource = controller.ObtenerEquipos()
+                .Select(e => new
                 {
-                    DniJugador = j.Dni,
-                    AliasJugador = j.Alias
+                    Equipo = e.NombreEquipo,
+                    DelegadoDNI = e.DniDelegado,
+                    PJ = e.PartidosJugados,
+                    PG = e.PartidosGanados,
+                    PE = e.PartidosEmpatados,
+                    PP = e.PartidosPerdidos,
+                    Puntos = e.Puntos
                 })
                 .ToList();
         }
 
-        private void RefrescarComboVideojuegos()
+        private void RefrescarComboTorneos()
         {
-            cboVideojuegos.DataSource = controller.ObtenerVideojuegos()
-                .Select(v => new ComboBoxOption(v.Codigo, $"{v.Codigo} - {v.Nombre}"))
+            cboVideojuegos.DataSource = controller.ObtenerTorneos()
+                .Select(t => new ComboBoxOption(t.Codigo, $"{t.Codigo} - {t.Nombre}"))
                 .ToList();
         }
 
